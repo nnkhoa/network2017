@@ -1,0 +1,109 @@
+\documentclass{report}
+\title{Practical Work 1}
+\author{Nguyen Nhu Khoa}
+\begin{document}
+\maketitle
+\begin{section}{Connect to VPS by SSH}
+\begin{verbatim}
+khoa@KhoaNguyen-Vostro-3460:~/eclipse$ ssh khoa@vp4.sontg.net
+khoa@vp4.sontg.net's password: 
+Linux vp4 3.2.0-4-amd64 #1 SMP Debian 3.2.65-1 x86_64
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+khoa@vp4:~$
+\end{verbatim}
+\end{section}
+
+\begin{section}{Pinging usth.edu.vn}
+\begin{verbatim}
+khoa@vp4:~ ping usth.edu.vn
+PING usth.edu.vn (42.112.27.174) 56(84) bytes of data.
+
+64 bytes from mail.usth.edu.vn (42.112.27.174): icmp_req=1 ttl=47 time=219 ms
+
+64 bytes from mail.usth.edu.vn (42.112.27.174): icmp_req=2 ttl=47 time=219 ms
+
+64 bytes from mail.usth.edu.vn (42.112.27.174): icmp_req=3 ttl=47 time=219 ms
+
+64 bytes from mail.usth.edu.vn (42.112.27.174): icmp_req=4 ttl=47 time=219 ms
+
+64 bytes from mail.usth.edu.vn (42.112.27.174): icmp_req=5 ttl=47 time=219 ms
+
+64 bytes from mail.usth.edu.vn (42.112.27.174): icmp_req=6 ttl=47 time=219 ms
+
+^C
+
+--- usth.edu.vn ping statistics ---
+
+7 packets transmitted, 6 received, 14\% packet loss, time 6007ms
+
+rtt min/avg/max/mdev = 219.252/219.354/219.488/0.280 ms
+\end{verbatim}
+\end{section}
+
+\begin{section}{Traceroute from VPS to usth.edu.vn}
+
+There are 16 hops from the VPS to usth.edu.vn
+
+\begin{verbatim}
+khoa@vp4:~$ traceroute usth.edu.vn
+traceroute to usth.edu.vn (42.112.27.174), 30 hops max, 60 byte packets
+ 1  route.cloudatcost.com (104.167.107.1)  0.617 ms  0.684 ms  0.733 ms
+ 2  * * *
+ 3  pc-17.coreswitch1.kit.rackanddata.com (98.143.96.56)  0.498 ms  0.562 ms 
+    pc-17.coreswitch2.kit.rackanddata.com (98.143.96.58)  0.518 ms
+ 4  vl3831.te-0-1-0-3.tor0151-asr9a.ne.fibernetics.ca (74.205.214.57)  5.295 ms 
+    te4-6.tor01ad-crs1.ne.fibernetics.ca (74.205.210.161)  3.223 ms 
+    vl3831.te-0-1-0-3.tor0151-asr9a.ne.fibernetics.ca (74.205.214.57)  5.286 ms
+ 5  * * *
+ 6  v635.core1.tor1.he.net (209.51.163.213)  4.618 ms  4.916 ms  4.899 ms
+ 7  * 100ge13-1.core1.chi1.he.net (184.105.80.5)  14.485 ms *
+ 8  100ge14-1.core2.chi1.he.net (184.105.81.97)  14.666 ms 
+    v635.core1.tor1.he.net (209.51.163.213)  4.096 ms  4.102 ms
+ 9  100ge13-1.core1.chi1.he.net (184.105.80.5)  13.943 ms * 
+    100ge14-2.core1.msp1.he.net (184.105.223.178)  22.592 ms
+10  100ge14-1.core2.chi1.he.net (184.105.81.97)  19.947 ms 
+    100ge4-1.core1.sea1.he.net (184.105.223.193)  55.781 ms 
+    100ge14-1.core2.chi1.he.net (184.105.81.97)  19.501 ms
+11  100ge8-1.core1.tyo1.he.net (184.105.213.118)  153.754 ms  153.402 ms 
+    100ge14-2.core1.msp1.he.net (184.105.223.178)  28.810 ms
+12  18403.tyo.equinix.com (203.190.230.127)  220.859 ms  220.669 ms  220.347 ms
+13  118.70.1.106 (118.70.1.106)  218.252 ms 
+    100ge8-1.core1.tyo1.he.net (184.105.213.118)  158.116 ms  151.636 ms
+14  118.70.3.94 (118.70.3.94)  220.026 ms  220.213 ms 
+    18403.tyo.equinix.com (203.190.230.127)  220.824 ms
+15  42.112.4.62 (42.112.4.62)  220.609 ms 118.70.3.74 (118.70.3.74)  1260.763 ms 
+    118.70.1.106 (118.70.1.106)  217.471 ms
+16  118.70.3.94 (118.70.3.94)  219.140 ms mail.usth.edu.vn (42.112.27.174)  219.073 ms 
+    118.70.3.94 (118.70.3.94)  219.352 ms
+
+\end{verbatim}
+\end{section}
+
+\begin{section}{Traceroute from laptop to usth.edu.vn}
+
+There are 12 hops from the laptop to usth.edu.vn
+
+\begin{verbatim}
+khoa@KhoaNguyen-Vostro-3460:~/Documents/Network/network2017$ traceroute usth.edu.vn
+traceroute to usth.edu.vn (42.112.27.174), 30 hops max, 60 byte packets
+ 1  192.168.1.1 (192.168.1.1)  1.951 ms  2.205 ms  2.203 ms
+ 2  192.168.6.1 (192.168.6.1)  3.838 ms  3.845 ms  3.844 ms
+ 3  static.netnam.vn (119.17.212.1)  4.144 ms  4.160 ms  4.311 ms
+ 4  10.100.4.13 (10.100.4.13)  4.101 ms  4.140 ms  4.281 ms
+ 5  10.100.4.21 (10.100.4.21)  4.085 ms  4.083 ms  4.089 ms
+ 6  ci228-6.netnam.vn (210.86.228.6)  4.242 ms  3.807 ms  3.776 ms
+ 7  218.100.10.7 (218.100.10.7)  3.678 ms  3.688 ms  3.677 ms
+ 8  * * *
+ 9  * * *
+10  42.112.4.22 (42.112.4.22)  4.353 ms  4.364 ms  4.365 ms
+11  42.112.4.62 (42.112.4.62)  7.131 ms  7.159 ms 118.70.3.74 (118.70.3.74)  4.918 ms
+12  mail.usth.edu.vn (42.112.27.174)  3.446 ms  4.288 ms  4.298 ms
+\end{verbatim}
+\end{section}
+\end{document}
