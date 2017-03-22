@@ -14,7 +14,6 @@ int main(int argc, char **argv){
 		return -1;
 	}else if(argc == 2){
 		strcpy(hostname, argv[1]);
-		printf("%s", hostname);
 	}else if (argc == 1){
 		printf("Enter hostname: ");
 		scanf("%s", hostname);
